@@ -1,0 +1,1 @@
+web: gunicorn nyati_finserv.wsgi

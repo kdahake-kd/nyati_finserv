@@ -1,1 +1,3 @@
-nyati_finserv/__pycache__
+venv/
+db.sqlite3
+__pycache__/
