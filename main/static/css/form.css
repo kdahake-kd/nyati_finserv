@@ -1,0 +1,50 @@
+/* Styling for the message container */
+ul.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 300px;
+}
+
+/* Styling for individual message items */
+ul.messages li {
+    background-color: #dff0d8; /* Light green background for success messages */
+    border: 1px solid #d6e9c6; /* Border color for success messages */
+    color: #3c763d; /* Text color for success messages */
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Close button styling */
+ul.messages li .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 20px;
+    color: #333;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+ul.messages li .close-btn:hover {
+    color: #000;
+}
+
+.close-btn {
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px; /* Add some margin between the message and the button */
+}
+

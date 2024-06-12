@@ -1,0 +1,1390 @@
+{% extends 'main/base.html' %} {% load static %} {% block title %}Home | Nyati
+Finserv{% endblock %} {% block content %}
+<!-- 
+    - #HEADER
+  -->
+
+<header class="header" data-header>
+  <div class="overlay" data-overlay></div>
+
+  <div class="header-top">
+    <div class="container">
+      <ul class="header-top-list">
+        <li>
+          <a href="mailto:info@homeverse.com" class="header-top-link">
+            <ion-icon name="mail-outline"></ion-icon>
+
+            <span>info@nyatifinserv.com</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="header-top-link">
+            <ion-icon name="location-outline"></ion-icon>
+
+            <address>F5-25, Hermes Heritage ,yerwada</address>
+          </a>
+        </li>
+      </ul>
+
+      <div class="wrapper">
+        <ul class="header-top-social-list">
+          <li>
+            <a href="#" class="header-top-social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="header-top-social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="header-top-social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="header-top-social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+        </ul>
+
+        <button class="header-top-btn">login</button>
+      </div>
+    </div>
+  </div>
+  
+  {% if messages %}
+  <div class="messages-container">
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+            <button type="button" class="close-btn"  onclick="this.parentElement.style.display='none';">x</button>
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<!-- HTML for the popup form -->
+<!-- The welcome form modal -->
+<div id="popup-form" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeButton">&times;</span>
+        <h2>Welcome! Please fill out the form:</h2>
+        <form id="userForm" class="contact-form" method="POST" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+  
+  
+  
+
+  <div class="header-bottom">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="static/images/nyati.png" alt="Homeverse logo" />
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="static/images/logo.png" alt="Homeverse logo" />
+          </a>
+
+          <button
+            class="nav-close-btn"
+            data-nav-close-btn
+            aria-label="Close Menu"
+          >
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+
+        <div class="navbar-bottom">
+          <ul class="navbar-list">
+            <li>
+              <a href="#home" class="navbar-link" data-nav-link>Home</a>
+            </li>
+
+            <li>
+              <a href="#about" class="navbar-link" data-nav-link>About</a>
+            </li>
+
+            <li>
+              <a href="#service" class="navbar-link" data-nav-link>Service</a>
+            </li>
+
+            <li>
+              <a href="#property" class="navbar-link" data-nav-link>Property</a>
+            </li>
+
+            <li>
+              <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+            </li>
+
+            <li>
+              <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="header-bottom-actions">
+        <button class="header-bottom-actions-btn" aria-label="Search">
+          <ion-icon name="search-outline"></ion-icon>
+
+          <span>Search</span>
+        </button>
+
+        <button class="header-bottom-actions-btn" aria-label="Profile">
+          <ion-icon name="person-outline"></ion-icon>
+
+          <span>Profile</span>
+        </button>
+
+        <button class="header-bottom-actions-btn" aria-label="Cart">
+          <ion-icon name="cart-outline"></ion-icon>
+
+          <span>Cart</span>
+        </button>
+
+        <button
+          class="header-bottom-actions-btn"
+          data-nav-open-btn
+          aria-label="Open Menu"
+        >
+          <ion-icon name="menu-outline"></ion-icon>
+
+          <span>Menu</span>
+        </button>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+<main>
+  <article>
+    <!-- 
+        - #HERO
+      -->
+
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-subtitle">
+            <ion-icon name="home"></ion-icon>
+
+            <span>Finance Company </span>
+          </p>
+
+          <h2 class="h1 hero-title">Nyati Finserv Welcomes You</h2>
+
+          <p class="hero-text">
+            At Nyati Finserv, our mission is to provide quality accommodations and personalized experiences. Our platform is dedicated to ensuring that every traveler embarks on their dream holiday with confidence and excitement.
+          </p>
+
+          <button class="btn">Make An Enquiry</button>
+        </div>
+
+        <figure class="hero-banner">
+          <img
+            src="static/images/hero-img.png"
+            alt="Modern house model"
+            class="w-100"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <!-- 
+        - #ABOUT
+      -->
+
+    <section class="about" id="about">
+      <div class="container">
+        <figure class="about-banner">
+          <img src="static/images/about-img.avif" alt="House interior" />
+
+          
+        </figure>
+
+        <div class="about-content">
+          <p class="section-subtitle">About Us</p>
+
+          <h2 class="h2 section-title">
+            
+            We are the experts of our field.
+          </h2>
+
+          <p class="about-text">
+            Our team comprises of seasoned and experienced professionals who have spent several years in investment and technology industry solving problems.
+            The MoneySpring founding team draws experience and expertise from the domains of wealth management, lending , insurance and technology product development
+          </p>
+
+          <ul class="about-list">
+            <li class="about-item">
+              <div class="about-item-icon">
+                <ion-icon name="home-outline"></ion-icon>
+              </div>
+
+              <p class="about-item-text">Mission and Vision</p>
+            </li>
+
+            <li class="about-item">
+              <div class="about-item-icon">
+                <ion-icon name="leaf-outline"></ion-icon>
+              </div>
+
+              <p class="about-item-text">Expertise and Experience</p>
+            </li>
+
+            <li class="about-item">
+              <div class="about-item-icon">
+                <ion-icon name="wine-outline"></ion-icon>
+              </div>
+
+              <p class="about-item-text">Customer Success Stories</p>
+            </li>
+
+            <li class="about-item">
+              <div class="about-item-icon">
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+              </div>
+
+              <p class="about-item-text">Complete 24/7 Security</p>
+            </li>
+          </ul>
+
+          <p class="callout">
+            "By focusing on empowerment, expertise, security, and proven success,
+             we are committed to guiding you towards achieving your financial goals with confidence.
+              Join us and take the first step towards a secure and prosperous financial future.""
+          </p>
+
+          <a href="#service" class="btn">Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+        - #SERVICE
+      -->
+
+    <section class="service" id="service">
+      <div class="container">
+        <p class="section-subtitle">Our Services</p>
+
+        <h2 class="h2 section-title">Our Main Focus</h2>
+
+        <ul class="service-list">
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+                <img src="static/images/mutual-fund.jpg" alt="Service icon" />
+              </div>
+
+              <h3 class="h3 card-title">
+                <a href="#">Mutual Fund</a>
+              </h3>
+
+              <p class="card-text">
+                A mutual fund pools money from many investors to invest in a diversified portfolio of stocks, bonds, or other securities.
+                 Managed by professionals, it offers diversification and professional management, often at a lower cost than individual investments.
+              </p>
+
+              <a href="#" class="card-link">
+                <span>Mutual Fund</span>
+
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+                <img src="static/images/fd.png" alt="Service icon" />
+              </div>
+
+              <h3 class="h3 card-title">
+                <a href="#">FD</a>
+              </h3>
+
+              <p class="card-text">
+                A Fixed Deposit (FD) is a financial instrument provided by banks that offers a higher interest rate than a regular savings account. 
+                Investors deposit a lump sum for a fixed tenure and receive the principal amount along with interest at maturity.
+              </p>
+
+              <a href="#" class="card-link">
+                <span>FD</span>
+
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+                <img src="static/images/gold-img.png" alt="Service icon" />
+              </div>
+
+              <h3 class="h3 card-title">
+                <a href="#">Gold</a>
+              </h3>
+
+              <p class="card-text">
+                Gold is a valuable and historically significant precious metal used for investment, jewelry, and industrial purposes. 
+                It acts as a hedge against inflation and currency fluctuations, often considered a safe-haven asset in times of economic uncertainty.
+              </p>
+
+              <a href="#" class="card-link">
+                <span>Gold</span>
+
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card">
+              <div class="card-icon">
+                <img src="static/images/stock.jpg" alt="Service icon" />
+              </div>
+
+              <h3 class="h3 card-title">
+                <a href="#">Stock</a>
+              </h3>
+
+              <p class="card-text">
+                Stocks represent ownership shares in a company, giving shareholders a claim on part of the company's assets and earnings. They offer the potential 
+                for high returns through price appreciation and dividends, but come with higher risk compared to other investments.
+              </p>
+
+              <a href="#" class="card-link">
+                <span>Stock</span>
+
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 
+        - #PROPERTY
+      -->
+
+    <section class="property" id="property">
+      <div class="container">
+        <p class="section-subtitle">Properties</p>
+
+        <h2 class="h2 section-title" style="color: #e82574;">Why Nyati Finserv ?</h2>
+
+        <ul class="property-list has-scrollbar">
+          <li>
+            <div class="property-card">
+              <figure class="card-banner">
+                <a href="#">
+                  <img
+                    src="static/images/kyc.png"
+                    alt="New Apartment Nice View"
+                    class="w-100"
+                  />
+                </a>
+
+                <div class="card-badge green">Steps</div>
+
+                <div class="banner-actions">
+                  <button class="banner-actions-btn">
+                    <ion-icon name="location"></ion-icon>
+
+                    <address>Nyati Finserv, Pune</address>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="camera"></ion-icon>
+
+                    <span>7</span>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="film"></ion-icon>
+
+                    <span>4</span>
+                  </button>
+                </div>
+              </figure>
+
+              <div class="card-content">
+                
+
+                <h3 class="h3 card-title">
+                  <a href="#">Simple KYC</a>
+                </h3>
+
+                <p class="card-text">
+                    Verification, Compliance, Identity, Documentation, Security
+                </p>
+
+                <ul class="card-list">
+                  <li class="card-item">
+                    <strong>78678</strong>
+
+                    
+
+                    <span>processing</span>
+                  </li>
+
+                  <li class="card-item">
+                    <strong>45678</strong>
+
+                  
+
+                    <span>Pending</span>
+                  </li>
+
+                  <li class="card-item">
+                    <strong>87345</strong>
+
+                    
+
+                    <span>Completed</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-author">
+                  <figure class="author-avatar">
+                    <img
+                      src="static/images/author.jpg"
+                      alt="William Seklo"
+                      class="w-100"
+                    />
+                  </figure>
+
+                  <div>
+                    <p class="author-name">
+                      <a href="#">Departmend head</a>
+                    </p>
+
+                    <p class="author-title">Estate Agents</p>
+                  </div>
+                </div>
+
+                <div class="card-footer-actions">
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="resize-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="heart-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="property-card">
+              <figure class="card-banner">
+                <a href="#">
+                  <img
+                    src="static/images/smart.png"
+                    alt="Modern Apartments"
+                    class="w-100"
+                  />
+                </a>
+                <div class="card-badge green">Steps</div>
+
+                <div class="banner-actions">
+                  <button class="banner-actions-btn">
+                    <ion-icon name="location"></ion-icon>
+
+                    <address>Nyati Finserv, Pune</address>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="camera"></ion-icon>
+
+                    <span>9</span>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="film"></ion-icon>
+
+                    <span>6</span>
+                  </button>
+                </div>
+              </figure>
+
+              <div class="card-content">
+               
+
+                <h3 class="h3 card-title">
+                  <a href="#">Smart Recommendation</a>
+                </h3>
+
+                <p class="card-text">
+                    Algorithm, Analysis, Tailored, Insights, Optimization
+                </p>
+
+                <ul class="card-list">
+                    <li class="card-item">
+                      <strong>32455</strong>
+  
+                      
+  
+                      <span>processing</span>
+                    </li>
+  
+                    <li class="card-item">
+                      <strong>63463</strong>
+  
+                    
+  
+                      <span>Pending</span>
+                    </li>
+  
+                    <li class="card-item">
+                      <strong>32455</strong>
+  
+                      
+  
+                      <span>Completed</span>
+                    </li>
+                  </ul>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-author">
+                  <figure class="author-avatar">
+                    <img
+                      src="static/images/author.jpg"
+                      alt="William Seklo"
+                      class="w-100"
+                    />
+                  </figure>
+
+                  <div>
+                    <p class="author-name">
+                      <a href="#">Department Head</a>
+                    </p>
+
+                    <p class="author-title">Estate Agents</p>
+                  </div>
+                </div>
+
+                <div class="card-footer-actions">
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="resize-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="heart-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="property-card">
+              <figure class="card-banner">
+                <a href="#">
+                  <img
+                    src="static/images/free.png"
+                    alt="Comfortable Apartment"
+                    class="w-100"
+                  />
+                </a>
+
+                <div class="card-badge green">Complete</div>
+
+                <div class="banner-actions">
+                  <button class="banner-actions-btn">
+                    <ion-icon name="location"></ion-icon>
+
+                    <address>Nyati Finserv, Pune</address>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="camera"></ion-icon>
+
+                    <span>7</span>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="film"></ion-icon>
+
+                    <span>3</span>
+                  </button>
+                </div>
+              </figure>
+
+              <div class="card-content">
+               
+
+                <h3 class="h3 card-title">
+                  <a href="#">Hassle Free Transactions</a>
+                </h3>
+
+                <p class="card-text">
+                    Efficient, Seamless, Automated, Convenient, Smooth
+                </p>
+
+                <ul class="card-list">
+                    <li class="card-item">
+                      <strong>12341</strong>
+  
+                      
+  
+                      <span>processing</span>
+                    </li>
+  
+                    <li class="card-item">
+                      <strong>12343</strong>
+  
+                    
+  
+                      <span>Pending</span>
+                    </li>
+  
+                    <li class="card-item">
+                      <strong>34522</strong>
+  
+                      
+  
+                      <span>Completed</span>
+                    </li>
+                  </ul>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-author">
+                  <figure class="author-avatar">
+                    <img
+                      src="static/images/author.jpg"
+                      alt="William Seklo"
+                      class="w-100"
+                    />
+                  </figure>
+
+                  <div>
+                    <p class="author-name">
+                      <a href="#">Dapartment Head</a>
+                    </p>
+
+                    <p class="author-title">Estate Agents</p>
+                  </div>
+                </div>
+
+                <div class="card-footer-actions">
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="resize-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="heart-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="property-card">
+              <figure class="card-banner">
+                <a href="#">
+                  <img
+                    src="static/images/planning.png"
+                    alt="Luxury villa in Rego Park"
+                    class="w-100"
+                  />
+                </a>
+
+                <div class="card-badge green">Complete</div>
+
+                <div class="banner-actions">
+                  <button class="banner-actions-btn">
+                    <ion-icon name="location"></ion-icon>
+                    <address>Nyati Finserv, Pune</address>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="camera"></ion-icon>
+
+                    <span>2</span>
+                  </button>
+
+                  <button class="banner-actions-btn">
+                    <ion-icon name="film"></ion-icon>
+
+                    <span>5</span>
+                  </button>
+                </div>
+              </figure>
+
+              <div class="card-content">
+                
+
+                <h3 class="h3 card-title">
+                  <a href="#">planning Made Easier</a>
+                </h3>
+
+                <p class="card-text">
+                    Simplified, Streamlined, Organized, Guided, Effortless
+                </p>
+
+                <ul class="card-list">
+                    <li class="card-item">
+                      <strong>5674</strong>
+  
+                      
+  
+                      <span>processing</span>
+                    </li>
+  
+                    <li class="card-item">
+                      <strong>34563</strong>
+  
+                    
+  
+                      <span>Pending</span>
+                    </li>
+  
+                    <li class="card-item">
+                      <strong>65756</strong>
+  
+                      
+  
+                      <span>Completed</span>
+                    </li>
+                  </ul>
+              </div>
+
+              <div class="card-footer">
+                <div class="card-author">
+                  <figure class="author-avatar">
+                    <img
+                      src="static/images/author.jpg"
+                      alt="William Seklo"
+                      class="w-100"
+                    />
+                  </figure>
+
+                  <div>
+                    <p class="author-name">
+                      <a href="#">Dapartment head</a>
+                    </p>
+
+                    <p class="author-title">Estate Agents</p>
+                  </div>
+                </div>
+
+                <div class="card-footer-actions">
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="resize-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="heart-outline"></ion-icon>
+                  </button>
+
+                  <button class="card-footer-actions-btn">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 
+        - #FEATURES
+      -->
+
+    <section class="features">
+      <div class="container">
+        <p class="section-subtitle">Our Aminities</p>
+
+        <h2 class="h2 section-title">One stop solution for all your financial needs</h2>
+
+        <ul class="features-list">
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="document-text"></ion-icon>
+              
+              </div>
+
+              <h3 class="card-title">Dream fulfillment</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="stats-chart"></ion-icon>
+              </div>
+
+              <h3 class="card-title">Simple investing</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="shield-checkmark"></ion-icon>
+              </div>
+
+              <h3 class="card-title">Financial security</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="person-add"></ion-icon>
+              </div>
+
+              <h3 class="card-title">Wealth diversification</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="trending-down"></ion-icon>
+              </div>
+
+              <h3 class="card-title">Risk assessment</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="finger-print"></ion-icon>
+              </div>
+
+              <h3 class="card-title">Data protection</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="people"></ion-icon>
+              </div>
+
+              <h3 class="card-title">Asset management</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="features-card">
+              <div class="card-icon">
+                <ion-icon name="trending-up"></ion-icon>
+              </div>
+
+              <h3 class="card-title">Capital growth</h3>
+
+              <div class="card-btn">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 
+        - #BLOG
+      -->
+
+    <section class="blog" id="blog">
+      <div class="container">
+        <p class="section-subtitle">News & Blogs</p>
+
+        <h2 class="h2 section-title">Leatest News Feeds</h2>
+
+        <ul class="blog-list has-scrollbar">
+          <li>
+            <div class="blog-card">
+              <figure class="card-banner">
+                <img
+                  src="static/images/fund.jpeg"
+                  alt="The Most Inspiring Interior Design Of 2021"
+                  class="w-100"
+                />
+              </figure>
+
+              <div class="blog-content">
+                <div class="blog-content-top">
+                  <ul class="card-meta-list">
+                    <li>
+                      <a href="#" class="card-meta-link">
+                        <ion-icon name="person"></ion-icon>
+
+                        <span>by: Admin</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      
+                    </li>
+                  </ul>
+
+                  <h3 class="h3 blog-title">
+                    <a href="#">Why Saving Money is Important for Student</a>
+                  </h3>
+                </div>
+
+                <div class="blog-content-bottom">
+                  <div class="publish-date">
+                    <ion-icon name="calendar"></ion-icon>
+
+                    <time datetime="2022-27-04">Jan 02, 2024</time>
+                  </div>
+
+                  <a href="#" class="read-more-btn">Read More</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="card-banner">
+                <img
+                  src="static/images/tax1.png"
+                  alt="Recent Commercial Real Estate Transactions"
+                  class="w-100"
+                />
+              </figure>
+
+              <div class="blog-content">
+                <div class="blog-content-top">
+                  <ul class="card-meta-list">
+                    <li>
+                      <a href="#" class="card-meta-link">
+                        <ion-icon name="person"></ion-icon>
+
+                        <span>by: Admin</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      
+                    </li>
+                  </ul>
+
+                  <h3 class="h3 blog-title">
+                    <a href="#">Best Tax Saving Mutual Fund</a>
+                  </h3>
+                </div>
+
+                <div class="blog-content-bottom">
+                  <div class="publish-date">
+                    <ion-icon name="calendar"></ion-icon>
+
+                    <time datetime="2022-27-04">Jan 27, 2024</time>
+                  </div>
+
+                  <a href="#" class="read-more-btn">Read More</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="blog-card">
+              <figure class="card-banner">
+                <img
+                  src="static/images/sip.jpeg"
+                  alt="Renovating a Living Room? Experts Share Their Secrets"
+                  class="w-100"
+                />
+              </figure>
+
+              <div class="blog-content">
+                <div class="blog-content-top">
+                  <ul class="card-meta-list">
+                    <li>
+                      <a href="#" class="card-meta-link">
+                        <ion-icon name="person"></ion-icon>
+
+                        <span>by: Admin</span>
+                      </a>
+                    </li>
+
+                    <li>
+                     
+                    </li>
+                  </ul>
+
+                  <h3 class="h3 blog-title">
+                    <a href="#"
+                      >To Be or not To Be</a
+                    >
+                  </h3>
+                </div>
+
+                <div class="blog-content-bottom">
+                  <div class="publish-date">
+                    <ion-icon name="calendar"></ion-icon>
+
+                    <time datetime="2022-27-04">Feb 21, 2024</time>
+                  </div>
+
+                  <a href="#" class="read-more-btn">Read More</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="blog-card">
+              <figure class="card-banner">
+                <img
+                  src="static/images/insurence.jpeg"
+                  alt="The Most Inspiring Interior Design Of 2021"
+                  class="w-100"
+                />
+              </figure>
+
+              <div class="blog-content">
+                <div class="blog-content-top">
+                  <ul class="card-meta-list">
+                    <li>
+                      <a href="#" class="card-meta-link">
+                        <ion-icon name="person"></ion-icon>
+
+                        <span>by: Admin</span>
+                      </a>
+                    </li>
+
+                    <li>
+                     
+                    </li>
+                  </ul>
+
+                  <h3 class="h3 blog-title">
+                    <a href="#">Why should you do If you save less than Investment</a>
+                  </h3>
+                </div>
+
+                <div class="blog-content-bottom">
+                  <div class="publish-date">
+                    <ion-icon name="calendar"></ion-icon>
+
+                    <time datetime="2022-27-04">May 27, 2024</time>
+                  </div>
+
+                  <a href="#" class="read-more-btn">Read More</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 
+        - #CTA
+      -->
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-card">
+          <div class="card-content">
+            <h2 class="h2 card-title">Looking for a Mutual Fund?</h2>
+
+            <p class="card-text">
+              We can help you Find out the best Investment plan
+            </p>
+          </div>
+
+          <button class="btn cta-btn">
+            <span>Explore Plan</span>
+
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="container">
+          <p class="section-subtitle">Contact Us</p>
+          <h2 class="h2 section-title">Get in Touch</h2>
+      
+          <form class="contact-form" method="POST" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+              <label for="phone">Phone:</label>
+              <input type="text" id="phone" name="phone" required>
+            </div>
+            <div>
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
+      </section>
+      
+      
+  </article>
+</main>
+
+<!-- 
+    - #FOOTER
+  -->
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="static/images/nyati.png" alt="Homeverse logo" />
+        </a>
+
+        <p class="section-text">
+            At Nyati Finserv, our mission is to provide quality accommodations and personalized experiences. Our platform is dedicated to ensuring that every traveler embarks on their dream holiday with confidence and excitement.
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <a href="#" class="contact-link">
+              <ion-icon name="location-outline"></ion-icon>
+
+              <address>F5-25 Hermes heritage,Phase II shastri nagar ,yerwada , pune</address>
+            </a>
+          </li>
+
+          <li>
+            <a href="tel:+9765051000" class="contact-link">
+              <ion-icon name="call-outline"></ion-icon>
+
+              <span>+91 9765051000</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="mailto:contact@homeverse.com" class="contact-link">
+              <ion-icon name="mail-outline"></ion-icon>
+
+              <span>contact@nyatifinserv.com</span>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="social-list">
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-link-box">
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title">Company</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">All Products</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Locations Map</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FAQ</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact us</a>
+          </li>
+        </ul>
+
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title">Services</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Order tracking</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Wish List</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Login</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">My account</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Terms & Conditions</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Promotional Offers</a>
+          </li>
+        </ul>
+
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title">Customer Care</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Login</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">My account</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Wish List</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Order tracking</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FAQ</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="copyright">
+        &copy; 2024 <a href="#">codewithsadee</a>. All Rights Reserved
+      </p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
