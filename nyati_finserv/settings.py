@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!u(y(2-=ud2ip-!n_0=9vc-is-vu#2#k@fdx@%8kae%3@2dipb'
+# SECRET_KEY = config('SECRET_KEY',default='') 
+SECRET_KEY='django-insecure-!u(y(2-=ud2ip-!n_0=9vc-is-vu#2#k@fdx@%8kae%3@2dipb'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG =config('DEBUG',cast=bool,default=True) 
+DEBUG=True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 MIDDLEWARE = [
@@ -128,9 +136,20 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'finservnyati@gmail.com'  # Replace with your Gmail address
+EMAIL_HOST_PASSWORD = 'wzdq jfni drbz zzuc'  # Replace with your Gmail password or App Password

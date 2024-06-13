@@ -54,7 +54,16 @@ Finserv{% endblock %} {% block content %}
           </li>
         </ul>
 
-        <button class="header-top-btn">login</button>
+        
+        {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% comment %} <button href="{% url 'logout' %}" class="header-top-btn">logout</button> {% endcomment %}
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% comment %} <button href="{% url 'login' %}" class="header-top-btn">Login</button> {% endcomment %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    {% comment %} <button href="{% url 'register' %}" class="header-top-btn">Sign up</button> {% endcomment %}
+                {% endif %}
       </div>
     </div>
   </div>
@@ -307,7 +316,7 @@ Finserv{% endblock %} {% block content %}
           <li>
             <div class="service-card">
               <div class="card-icon">
-                <img src="static/images/mutual-fund.jpg" alt="Service icon" />
+                <img src="static/images/mutual-fund.ico" alt="Service icon" />
               </div>
 
               <h3 class="h3 card-title">
@@ -376,7 +385,7 @@ Finserv{% endblock %} {% block content %}
           <li>
             <div class="service-card">
               <div class="card-icon">
-                <img src="static/images/stock.jpg" alt="Service icon" />
+                <img src="static/images/stock.ico" alt="Service icon" />
               </div>
 
               <h3 class="h3 card-title">

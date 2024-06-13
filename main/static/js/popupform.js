@@ -34,7 +34,7 @@ window.onload = function() {
     
     console.log(popupShown)
 
-    if (!popupShown) {
+    if (popupShown) {
         
         setTimeout(function() {
             document.getElementById('popup-form').style.display = 'block';
